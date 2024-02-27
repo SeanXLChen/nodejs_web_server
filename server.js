@@ -26,4 +26,10 @@ app.get('/old-page', (req, res) => {
     res.redirect(301, '/new-page'); // default status code is 302, pass in 301 as the second argument to change it
 });
 
+// express is waterfall, so the order of the routes matters
+// route to serve the 404 page (http://localhost:3500/anything-else)
+app.get('*', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
