@@ -9,6 +9,13 @@ const PORT = process.env.PORT || 3500;  // set the port to 3500
 //     res.send('Hello World');
 // });
 
+// custom middleware to log the request method, url, ip, and path
+// custom middleware need a third argument, next, to pass control to the next matching route
+app.use((req, res, next) => {
+    console.log(`Time: ${Date.now()}\n Method: ${req.method}\n URL: ${req.url}\n IP: ${req.ip}\n PATH = ${req.path}\n`);
+    next(); // next() is a function that passes control to the next matching route
+});
+
 // built-in middleware to handle urlencoded data
 // in other words, form data
 // 'content-type': 'application/x-www-form-urlencoded'
