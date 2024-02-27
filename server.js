@@ -8,10 +8,16 @@ const PORT = process.env.PORT || 3500;  // set the port to 3500
 //     res.send('Hello World');
 // });
 
-// route to serve the index.html file
+// route to serve the index.html file (http://localhost:3500)
 app.get('/', (req, res) => {
     // res.sendFile('./views/index.html', { root: __dirname });
     res.sendFile(path.join(__dirname, 'views', 'index.html')); // use path.join to make it easier to concatenate paths
+});
+
+// route to serve the new-page.html file (http://localhost:3500/new-page)
+app.get('/new-page', (req, res) => {
+    // res.sendFile('./views/new-page.html', { root: __dirname });
+    res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
