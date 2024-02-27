@@ -1,0 +1,3 @@
+20240227	12:44:14	b57d378c-9bdc-4a9e-8b93-5240d6a5b130	GET	undefined	/new-page
+20240227	12:44:14	af98b7b2-e166-444e-837f-09b7f269f9b2	GET	undefined	/css/style.css
+20240227	12:44:14	fd322638-00e3-453b-8414-c8a87a5cf9f9	GET	undefined	/img/img1.jpg

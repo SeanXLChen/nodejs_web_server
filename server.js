@@ -2,6 +2,7 @@
 const express = require('express');  // import express
 const app = express();   // just a convention to use app as the name of the express instance
 const path = require('path');
+const logEvents = require('./middleware/logEvents');
 const PORT = process.env.PORT || 3500;  // set the port to 3500
 
 // // basic route
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3500;  // set the port to 3500
 // custom middleware to log the request method, url, ip, and path
 // custom middleware need a third argument, next, to pass control to the next matching route
 app.use((req, res, next) => {
+    logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, 'reqLog.txt');
     console.log(`Time: ${Date.now()}\n Method: ${req.method}\n URL: ${req.url}\n IP: ${req.ip}\n PATH = ${req.path}\n`);
     next(); // next() is a function that passes control to the next matching route
 });
