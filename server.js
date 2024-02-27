@@ -26,6 +26,33 @@ app.get('/old-page', (req, res) => {
     res.redirect(301, '/new-page'); // default status code is 302, pass in 301 as the second argument to change it
 });
 
+// Route handlers (1st way to chain multiple functions)
+app.get('/hello', (req, res, next) => {   
+    console.log('Attempting to say hello');
+    next(); // next() is a function that passes control to the next matching route
+}
+, (req, res) => {
+    res.send('World');
+});
+
+// Route handlers (2nd way to chain multiple functions)
+const one = (req, res, next) => {
+    console.log('one');
+    next();
+}
+
+const two = (req, res, next) => {
+    console.log('two');
+    next();
+}
+
+const three = (req, res) => {
+    console.log('three');
+    res.send('Finished!');
+}
+
+app.get('/chain', [one, two, three]);
+
 // express is waterfall, so the order of the routes matters
 // route to serve the 404 page (http://localhost:3500/anything-else)
 app.get('*', (req, res) => {
