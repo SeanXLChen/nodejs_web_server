@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3500;  // set the port to 3500
 //     res.send('Hello World');
 // });
 
+// built-in middleware to handle urlencoded data
+// in other words, form data
+// 'content-type': 'application/x-www-form-urlencoded'
+app.use(express.urlencoded({ extended: false }));
+
 // route to serve the index.html file (http://localhost:3500)
 app.get('/', (req, res) => {
     // res.sendFile('./views/index.html', { root: __dirname });
