@@ -18,6 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 // 'content-type': 'application/json'
 app.use(express.json());
 
+// built-in middleware to serve static files
+// 'content-type': 'text/html', 'text/css', 'image/png', etc.
+// for example, http://localhost:3500/img/img1.jpg will access the img1.jpg file in the img folder inside /public
+app.use(express.static(path.join(__dirname, '/public')));
+
 // route to serve the index.html file (http://localhost:3500)
 app.get('/', (req, res) => {
     // res.sendFile('./views/index.html', { root: __dirname });
